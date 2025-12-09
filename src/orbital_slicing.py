@@ -8,9 +8,10 @@ em diferentes alturas, revelando a estrutura interna da distribuição de probab
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
-from scipy.special import sph_harm, genlaguerre
+from scipy.special import sph_harm_y, genlaguerre
 from math import factorial
 from typing import Optional
+import os
 
 
 def hydrogen_wavefunction_slice(
@@ -51,7 +52,7 @@ def hydrogen_wavefunction_slice(
         )
         L = genlaguerre(n-l-1, 2*l+1)(rho)
         R_nl = prefactor_r * np.exp(-rho/2) * (rho**l) * L
-        Y_lm = sph_harm(m, l, phi, theta)
+        Y_lm = sph_harm_y(l, m, theta, phi)
         psi = R_nl * Y_lm
         # Corrige NaNs que podem ocorrer na origem (r=0)
         psi[np.isnan(psi)] = 0
@@ -187,12 +188,18 @@ def create_orbital_slicing_animation(
 
 def main():
     """Função principal para execução standalone do módulo."""
+    # Criar diretório output se não existir
+    output_dir = 'output'
+    os.makedirs(output_dir, exist_ok=True)
+    
+    output_path = os.path.join(output_dir, 'orbital_slicing_3d.gif')
     create_orbital_slicing_animation(
         n=3,
         l=2,
         m=0,
-        output_file='orbital_slicing_3d.gif'
+        output_file=output_path
     )
+    print(f"\n✅ Animação salva em: {output_path}")
 
 
 if __name__ == "__main__":

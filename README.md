@@ -129,6 +129,7 @@ hydrogen-atom/
 │   ├── __init__.py
 │   ├── test_radial_wavefunction.py
 │   └── test_electron_cloud.py
+├── output/                       # Figuras e animações geradas
 ├── docs/                         # Documentação adicional
 ├── pics/                         # Imagens e recursos
 ├── olds/                         # Arquivos legados

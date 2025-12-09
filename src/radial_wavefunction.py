@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 from scipy.special import genlaguerre
 from math import factorial
 from typing import Tuple, List
+import os
 
 
 def radial_wavefunction(n: int, l: int, r: np.ndarray) -> np.ndarray:
@@ -127,7 +128,14 @@ def plot_radial_density(
 
 def main():
     """Função principal para execução standalone do módulo."""
-    plot_radial_density()
+    # Criar diretório output se não existir
+    output_dir = 'output'
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Salvar figura
+    output_path = os.path.join(output_dir, 'radial_density.png')
+    plot_radial_density(save_path=output_path)
+    print(f"\n✅ Figura salva em: {output_path}")
 
 
 if __name__ == "__main__":

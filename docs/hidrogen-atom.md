@@ -59,3 +59,42 @@ Ao rodar os scripts acima, preste atenção nestes detalhes fundamentais:
 
 A elegância reside no fato de que toda essa complexidade visual — lóbulos, anéis, nuvens — emerge de uma única equação diferencial linear. 
 Não desenhamos essas formas manualmente; a natureza as dita através das condições de contorno da matemática.
+
+---
+
+# ⚛️ Hydrogen Atom Wavefunction Visualization
+
+Visualização computacional das soluções da Equação de Schrödinger para o átomo de Hidrogênio em 3D, utilizando Python, Métodos de Monte Carlo e Fatiamento de Densidade de Probabilidade.
+
+![Hydrogen Orbital Animation](fatiamento_orbital_3d.gif)
+*(Certifique-se de que o gif gerado esteja na raiz do repo ou em uma pasta /assets)*
+
+## 📋 Sobre o Projeto
+
+Este projeto resolve a parte radial e angular da função de onda do Hidrogênio $\psi_{n,l,m}(r, \theta, \phi)$ e utiliza técnicas de visualização científica para renderizar:
+
+1.  **Densidade Radial:** A probabilidade de encontrar o elétron a uma distância $r$ do núcleo.
+2.  **Nuvem de Pontos 3D:** Utilizando amostragem por rejeição (Monte Carlo) para simular a natureza probabilística do orbital.
+3.  **Fatiamento Interno (Slicing):** Animação de corte transversal para visualização dos nós radiais e angulares internos.
+
+## 🚀 Tecnologias
+
+* **Python 3.x**
+* **NumPy:** Álgebra linear e grids.
+* **SciPy:** Polinômios de Laguerre e Harmônicas Esféricas (`scipy.special`).
+* **Matplotlib:** Plotagem 3D, Heatmaps e Animação.
+
+## 🧠 Física
+
+A solução baseia-se na separação de variáveis em coordenadas esféricas:
+
+$$\psi_{n,l,m}(r, \theta, \phi) = R_{nl}(r) Y_{lm}(\theta, \phi)$$
+
+Onde $n, l, m$ são os números quânticos principais, azimutais e magnéticos.
+
+## 📦 Como Rodar
+
+1. Clone o repositório.
+2. Instale as dependências:
+   ```bash
+   pip install numpy matplotlib scipy pillow

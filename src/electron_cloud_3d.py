@@ -9,9 +9,10 @@ Este módulo implementa:
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.special import sph_harm, genlaguerre
+from scipy.special import sph_harm_y, genlaguerre
 from math import factorial
 from typing import Tuple
+import os
 
 
 def hydrogen_wavefunction(
@@ -56,7 +57,7 @@ def hydrogen_wavefunction(
     R_nl = prefactor_r * np.exp(-rho/2) * (rho**l) * L
     
     # Parte Angular (Harmônicas Esféricas)
-    Y_lm = sph_harm(m, l, phi, theta)
+    Y_lm = sph_harm_y(l, m, theta, phi)
     
     return R_nl * Y_lm
 
@@ -201,9 +202,15 @@ def plot_electron_cloud(
 
 def main():
     """Função principal para execução standalone do módulo."""
+    # Criar diretório output se não existir
+    output_dir = 'output'
+    os.makedirs(output_dir, exist_ok=True)
+    
     # Configuração padrão: orbital 3d (m=0)
     n, l, m = 3, 2, 0
-    plot_electron_cloud(n, l, m)
+    output_path = os.path.join(output_dir, f'electron_cloud_{n}{"spdf"[l]}_{m}.png')
+    plot_electron_cloud(n, l, m, save_path=output_path)
+    print(f"\n✅ Figura salva em: {output_path}")
 
 
 if __name__ == "__main__":

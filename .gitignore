@@ -61,7 +61,7 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 
-# Arquivos de saída gerados
+# Arquivos de saída gerados (exceto em pastas específicas)
 *.png
 *.jpg
 *.gif
@@ -71,6 +71,9 @@ Thumbs.db
 !pics/*.jpg
 !pics/*.jpeg
 !pics/*.gif
+!output/*.png
+!output/*.jpg
+!output/*.gif
 
 # Logs
 *.log

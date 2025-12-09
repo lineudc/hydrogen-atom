@@ -107,6 +107,7 @@ git push -u origin main
 Arquivos importantes:
 - src/                 → Código fonte
 - tests/              → Testes
+- output/             → Figuras e animações geradas
 - olds/               → Scripts originais
 - docs/               → Documentação
 - Makefile            → Comandos automatizados
